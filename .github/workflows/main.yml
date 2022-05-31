@@ -30,6 +30,6 @@ jobs:
         with:
           context: .
           push: true
-          file: docker/Dockerfile
+          file: docker/Dockerfile.new
           tags: registry.cn-hangzhou.aliyuncs.com/chinapji/research_object
           cache-from: type=registry,ref=registry.cn-hangzhou.aliyuncs.com/chinapji/research_object
