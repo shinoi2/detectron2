@@ -21,18 +21,11 @@ WINDOW_NAME = "COCO detections"
 class ObjectDetection(object):
     def __init__(
         self,
-        config_file = None,
-        model_file = None,
+        config_file = "./config/mask_rcnn_R_50_FPN_3x.yaml",
+        model_file = "./model/mask_rcnn_R_50_FPN_3x.pkl",
         opts = [],
         confidence_threshold = 0.8
     ):
-        if not config_file:
-            path = os.path.dirname("./object_detection.py")
-            print(path)
-            config_file = path + "/../configs/COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml"
-        if not model_file:
-            path = os.path.dirname("./object_detection.py")
-            model_file = path + "/models/mask_rcnn_R_50_FPN_3x.pkl"
         cfg = get_cfg()
         cfg.merge_from_file(config_file)
         cfg.merge_from_list(opts)
@@ -62,7 +55,6 @@ def image(object_detection, image):
         )
     )
     
-
 def main():
     object_detection = ObjectDetection()
     image(object_detection, "./image/dog.jpg") 
